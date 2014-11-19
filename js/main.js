@@ -42,7 +42,7 @@ $(document).on("pageinit","#page-1",function(e)
         }    
         var table_bg_color = "<colgroup><col style=background-color:LightGrey><col style=background-color:LightCyan><col style=background-color:white></colgroup>";
         var table_header = "<thead><tr><th>投票所</th> <th>連勝文</th> <th>柯文哲</th> </tr></thead>";
-        table.append("<td  valign=top> <table id="+table_id+" border=1>"+table_bg_color+table_header+"<tbody></tbody></table></td>");
+        table.append("<td  valign=top> <table id="+table_id+" style='border:1px #FFAC55 solid;padding:5px;' rules='all' cellpadding='5';>"+table_bg_color+table_header+"<tbody></tbody></table></td>");
         return table_id;
     }
 
