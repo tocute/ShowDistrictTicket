@@ -64,7 +64,7 @@ $(document).on("pageinit","#page-1",function(e)
         } 
         table.empty();
         districtId = mDistrictIDArray[districtDisplayId];
-        districtName.text("區域 : "+ mDistrictNameArray[districtDisplayId]);
+        districtName.text((districtDisplayId+1)+". "+ mDistrictNameArray[districtDisplayId]);
 
         var TicketInfoObject = Parse.Object.extend("TicketInfoObject");
         var query = new Parse.Query(TicketInfoObject);
