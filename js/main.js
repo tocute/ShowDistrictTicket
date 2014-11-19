@@ -6,119 +6,141 @@ $(document).on("mobileinit",function(e)
 $(document).on("pageinit","#page-1",function(e)
 {
     Parse.initialize("CPFQXuoHErkxiN8b3uDFuGuGBnZbLen9jglvAB4p", "qvHqLCDitrqkwAL3bSbMfbdcYlUY9wlfVJZmom3S");
-    var mDistrictId = 6300100;
-    
+    var mDistrictIDArray = [6301200,6301100,6301000,6300900,6300100,6300200,6300400,6300600,6300500,6300700,6300300,6300800];
+    var mDistrictNameArray = ["北投","士林","內湖","南港","松山","信義","中山","大同","中正","萬華","大安","文山"];
+
+    var mDistrictDisplayOrder = 0;
+    var mTimerInterval = 30000;
+    var mMaxRow = 38;
+
     var onBtnGetPreTicketClick = function (e)
     {
-        mDistrictId -= 100;
-        if(mDistrictId < 6300100)
-            mDistrictId = 6301200;
-        updateTable(mDistrictId);
+        mDistrictDisplayOrder -= 2;
+        if(mDistrictDisplayOrder < 0)
+            mDistrictDisplayOrder = 10;
+        updateTable(mDistrictDisplayOrder);
+        updateTable(mDistrictDisplayOrder+1);
     }
 
     var onBtnGetNextTicketClick = function (e)
     {
-        mDistrictId += 100;
-        if(mDistrictId > 6301200)
-            mDistrictId = 6300100;
-        updateTable(mDistrictId);
+        mDistrictDisplayOrder += 2;
+        if(mDistrictDisplayOrder > 11)
+            mDistrictDisplayOrder = 0;
+        updateTable(mDistrictDisplayOrder);
+        updateTable(mDistrictDisplayOrder+1);
     }
       
-    var updateTable = function (districtId)
+    var addTable = function(districtId,col)
     {
-        var temp_list = $("#ticketList");
-        temp_list.empty();
-        $("#districtName").text("區域 : "+ getDistrictName(districtId));
+        var table = $("#bigTableLeft");
+        var table_id = "myTableLeft"+col;
+        if(districtId%2 == 1)
+        {
+            table = $("#bigTableRight");
+            table_id = "myTableRight"+col;
+        }    
+        var table_bg_color = "<colgroup><col style=background-color:LightGrey><col style=background-color:LightCyan><col style=background-color:white></colgroup>";
+        var table_header = "<thead><tr><th>投票所</th> <th>連勝文</th> <th>柯文哲</th> </tr></thead>";
+        table.append("<td  valign=top> <table id="+table_id+" border=1>"+table_bg_color+table_header+"<tbody></tbody></table></td>");
+        return table_id;
+    }
+
+    var updateTable = function (districtDisplayId)
+    {
+        $.mobile.loading( 'show', {
+            text: '資料更新中...',
+            textVisible: true,
+            theme: 'z',
+            html: ""
+            });
+
+        var table = $("#bigTableLeft");
+        var districtName = $("#leftDistrictName");
+        if(districtDisplayId%2 == 1)
+        {
+            table = $("#bigTableRight");
+            districtName = $("#rightDistrictName");
+        } 
+        table.empty();
+        districtId = mDistrictIDArray[districtDisplayId];
+        districtName.text("區域 : "+ mDistrictNameArray[districtDisplayId]);
 
         var TicketInfoObject = Parse.Object.extend("TicketInfoObject");
         var query = new Parse.Query(TicketInfoObject);
+        query.limit(1000);
         query.equalTo("districtId", ""+districtId);
         query.find({
             success: function(results) 
             {
                 var totalCandidate7Tictet = 0;
                 var totalCandidate6Tictet = 0;
+                var table_element = null;
+                var table_id = null;
+                var table_num = 1;
+                
                 for(var i = 0; i<results.length; i++)
                 {
+                    if(i % mMaxRow == 0)
+                    {
+                        table_id = addTable(districtDisplayId,table_num++);
+                        table_element = $("#"+table_id);
+                    }
+
                     var entiry = results[i];
-                    var districtId = entiry.get("districtId");
+
                     var candidate7Tictet = entiry.get("candidate7");
                     var candidate6Tictet = entiry.get("candidate6");
+                    var voteHouseId = entiry.get("voteHouseId");
 
                     totalCandidate7Tictet += candidate7Tictet;
                     totalCandidate6Tictet += candidate6Tictet;
 
-                    //var mydata = JSON.parse(district);
-                    //mydata[districtId];
-                    temp_list.append("<li>"+"District :  白："+candidate7Tictet +" 藍："+candidate6Tictet+"</li>");
+                    //+ 'tr:last'
+                    table_element.append('<tr><td>'+voteHouseId+'</td><td>'+candidate6Tictet+'</td><td>'+candidate7Tictet+'</td></tr>');
                 }
-                temp_list.append("<li> 白總："+totalCandidate7Tictet +" 藍總："+totalCandidate6Tictet+"</li>");
-                temp_list.listview("refresh");
+
+                table_element.append('<tr><td><b>區總票數</b></td><td><b>'+totalCandidate6Tictet+'</b></td><td><b>'+totalCandidate7Tictet+'</b></td></tr>');
+                $.mobile.loading( 'hide');
             },
             error: function(error) 
             {
                 alert("Error: " + error.code + " " + error.message);
+                $.mobile.loading('hide');
             }
         }); 
     }
 
-    var getDistrictName = function (districtId)
+    var onBtnSetTimer = function (e)
     {
-        var district_name = null;
-        if(districtId == 6301200)
+        var target = $(e.currentTarget);
+        var state = target.attr("value");
+        if(state == "true")
         {
-            district_name = "北投";  //1北投
-        }
-        else if(districtId == 6301100)
+            state = "false";  
+            target.text("開始更新");
+            clearInterval(mUpdateTimer);
+        } 
+        else
         {
-            district_name = "士林";  //2士林
-        }
-        else if(districtId == 6301000)
-        {
-            district_name = "內湖";  //3內湖
-        }
-        else if(districtId == 6300900)
-        {
-            district_name = "南港";  //4南港
-        }
-        else if(districtId == 6300100)
-        {
-            district_name = "松山";  //5松山
-        }
-        else if(districtId == 6300200)
-        {
-            district_name = "信義"; //6信義
-        }
-        else if(districtId == 6300400)
-        {
-            district_name = "中山"; //7中山
-        }
-        else if(districtId == 6300600)
-        {
-            district_name = "大同";  //8大同
-        }
-        else if(districtId == 6300500)
-        {
-            district_name = "中正";  //9中正
-        }
-        else if(districtId == 6300700)
-        {
-            district_name = "萬華";  //10萬華
-        }
-        else if(districtId == 6300300)
-        {
-            district_name = "大安";  //11大安
-        }
-        else if(districtId == 6300800)
-        {
-            district_name = "文山";  //12文山
-        }
-
-        return district_name;
+            state = "true";
+            target.text("停止更新");
+            mUpdateTimer = window.setInterval(initUpdate, mTimerInterval); 
+        }    
+        target.attr("value",state);
     }
 
-    updateTable(mDistrictId);
+    function initUpdate()
+    {
+        updateTable(mDistrictDisplayOrder);
+        updateTable(mDistrictDisplayOrder+1);
+    };
+
+    initUpdate();
+    var mUpdateTimer = window.setInterval(initUpdate, mTimerInterval);
     //6300100 - 6301200
     $("#btn_pre").on("click",onBtnGetPreTicketClick);
     $("#btn_next").on("click",onBtnGetNextTicketClick);
+    $("#btn_timer").on("click",onBtnSetTimer);
+    
 });
