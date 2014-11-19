@@ -22,12 +22,14 @@
     </head>
 
     <body>
+        <div id="background"></div>
         <div data-role="page" id="page-1">
             <div data-role="content" id="content-1">
-                <a id="btn_pre"><img src="image/btn_back.png"></a>            
-                <a id="btn_timer" value = "true">停止更新</a>
-                <a id="btn_next"><img src="image/btn_next.png"></a> 
-
+                <div id="button-div" data-role="controlgroup" data-type="horizontal">
+                    <a data-role = "button" id="btn_pre"><img src="image/btn_back.png"></a>
+                    <a data-role = "button" id="btn_timer" data-icon="refresh" value = "true" height = "54px" data-iconpos="top">停止更新</a>
+                    <a data-role = "button" id="btn_next"><img src="image/btn_next.png"></a> 
+                </div>
                 <div>
                     <table cellpadding=0  cellspacing=0  border=0>
                         <thead>

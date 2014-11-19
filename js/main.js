@@ -39,10 +39,10 @@ $(document).on("pageinit","#page-1",function(e)
         {
             table = $("#bigTableRight");
             table_id = "myTableRight"+col;
-        }    
-        var table_bg_color = "<colgroup><col style=background-color:LightGrey><col style=background-color:LightCyan><col style=background-color:white></colgroup>";
+        } 
+        var table_bg_color = "<colgroup><col style=background-color:#d1d1d1><col style=background-color:#ccecf2><col style=background-color:#f9f8f2></colgroup>";
         var table_header = "<thead><tr><th>投票所</th> <th>連勝文</th> <th>柯文哲</th> </tr></thead>";
-        table.append("<td  valign=top> <table id="+table_id+" style='border:1px #FFAC55 solid;padding:5px;' rules='all' cellpadding='5';>"+table_bg_color+table_header+"<tbody></tbody></table></td>");
+        table.append("<td  valign=top> <table id="+table_id+" style='border:1px #2e565b solid;padding:5px;' rules='all' cellpadding='5';>"+table_bg_color+table_header+"<tbody></tbody></table></td>");
         return table_id;
     }
 
@@ -86,7 +86,7 @@ $(document).on("pageinit","#page-1",function(e)
                         table_id = addTable(districtDisplayId,table_num++);
                         table_element = $("#"+table_id);
                     }
-
+                    
                     var entiry = results[i];
 
                     var candidate7Tictet = entiry.get("candidate7");
@@ -120,12 +120,16 @@ $(document).on("pageinit","#page-1",function(e)
             state = "false";  
             target.text("開始更新");
             clearInterval(mUpdateTimer);
+            //$("#my_image").attr("src","image/btn_start_update.png");
+            //target.append('<img src="image/btn_start_update.png"/>');
         } 
         else
         {
             state = "true";
             target.text("停止更新");
             mUpdateTimer = window.setInterval(initUpdate, mTimerInterval); 
+            //target.append('<img src="image/btn_stop_update.png"/>');
+            //$("#my_image").attr("src","image/btn_stop_update.png");
         }    
         target.attr("value",state);
     }

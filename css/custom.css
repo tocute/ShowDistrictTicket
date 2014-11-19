@@ -1,4 +1,26 @@
-#content-1{
-	background-image:url(../image/img_map.png);
-    background-color:Gainsboro;
+
+.ui-page{
+	background: transparent;
+}
+#background 
+{
+	position: fixed;
+	z-index: -1;
+	height: 100%;
+	width: 100%;
+	background: #329099;
+	background-image: url(../image/img_map.png);
+	background-size: cover;
+	background-position: bottom;
+	background-repeat: repeat-x;
+}
+
+#leftDistrictName ,#rightDistrictName
+{
+	color: white;
+	font-size: 20px;
+}
+
+#btn_timer {
+    height: 30px !important;
 }
