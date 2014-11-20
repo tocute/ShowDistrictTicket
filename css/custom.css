@@ -24,3 +24,22 @@
 #btn_timer {
     height: 30px !important;
 }
+
+.bigTableLeft
+{
+	position: fixed;
+	left: 0;
+}
+
+.bigTableMiddle
+{
+	position: fixed;
+	right: 40%;
+	left: 40%;
+}
+
+.bigTableRight
+{
+	position: fixed;
+	right: 0;
+}

@@ -120,16 +120,12 @@ $(document).on("pageinit","#page-1",function(e)
             state = "false";  
             target.text("開始更新");
             clearInterval(mUpdateTimer);
-            //$("#my_image").attr("src","image/btn_start_update.png");
-            //target.append('<img src="image/btn_start_update.png"/>');
         } 
         else
         {
             state = "true";
             target.text("停止更新");
             mUpdateTimer = window.setInterval(initUpdate, mTimerInterval); 
-            //target.append('<img src="image/btn_stop_update.png"/>');
-            //$("#my_image").attr("src","image/btn_stop_update.png");
         }    
         target.attr("value",state);
     }
