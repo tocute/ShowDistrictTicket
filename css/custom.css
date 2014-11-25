@@ -1,18 +1,40 @@
-
 .ui-page{
 	background: transparent;
 }
+
+body, html {
+  height: 100%;
+  width: 100%;
+  font-weight:bold;
+}
+
+#loader {
+	position: fixed; 
+	left: 42%; 
+	top: 85%; 
+	display: none;
+}
+
 #background 
 {
 	position: fixed;
 	z-index: -1;
 	height: 100%;
 	width: 100%;
-	background: #329099;
+	background: #dcdcdd;
 	background-image: url(../image/img_map.png);
 	background-size: cover;
 	background-position: bottom;
 	background-repeat: repeat-x;
+}
+
+#main {
+	height: 100%;
+	width: 100%;
+}
+
+#main h2 {
+	font-weight: bold;
 }
 
 #leftDistrictName ,#rightDistrictName
@@ -39,3 +61,121 @@
 	position: fixed;
 	right: 0;
 }
+
+#leftDiv {
+	float:left;
+	width:40%;
+	height:100%;
+	margin:30px;
+	background-size :contain;
+	background-repeat: no-repeat;
+}
+#rightDiv {
+	float:right;
+	width:40%;
+	height:100%;
+	margin:30px;
+	background-size :contain;
+	background-repeat: no-repeat;
+}
+
+#leftHeader,
+#rightHeader {
+	text-align: center;
+	vertical-align: center;
+	margin: 0px auto;
+	max-width:50%;
+	max-height:50%;
+	font-weight:bold;
+}
+
+#leftHeaderImage,
+#rightHeaderImage {
+	vertical-align: middle;
+	height: 100%;
+	width: 100%;
+}
+
+#candidateSeven {
+	width: 125px;
+	height: 40px;
+	background-image: url(../image/candidate7.png);
+	background-size: cover;
+	margin-top: 35px;
+	margin-bottom: 10px;
+}
+
+#candidateSix {
+	width: 125px;
+	height: 40px;
+	background-image: url(../image/candidate6.png);
+	background-size: cover;
+	margin-top: 35px;
+	margin-bottom: 10px;
+}
+
+#leftSevenTicketNum,
+#rightSevenTicketNum {
+	color: #1aa38f;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+#leftSixTicketNum,
+#rightSixTicketNum {
+	color: #15223f;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+#rightVoteHouseCount,
+#leftVoteHouseCount {
+	float:right;
+}
+
+
+#leftSevenProgress .progress-bar.progress-bar-info.progress-bar-striped,
+#rightSevenProgress .progress-bar.progress-bar-info.progress-bar-striped {
+    background-color: #1aa38f;
+    border-radius: 5px;
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+    background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+
+#leftSixProgress .progress-bar.progress-bar-striped,
+#rightSixProgress .progress-bar.progress-bar-striped {
+	background-color: #15223f;
+	border-radius: 5px;
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+    background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+
+#leftVoteProgress .progress-bar.progress-bar-info.progress-bar-striped,
+#rightVoteProgress .progress-bar.progress-bar-info.progress-bar-striped {
+	border-radius: 5px;
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+    background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+
+
+#nameLabel {
+	color:red;
+	font-size: 30px;
+	font-family: 'myFirstFont';
+}
+@font-face {
+    font-family: 'myFirstFont';
+    src: url('../Comfortaa-Light.ttf') format ('truetype');
+};
