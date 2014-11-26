@@ -155,14 +155,16 @@ $(function() {
       $('#leftVoteHouseCount').text(''+ nowLeftData.zhName +'區總投票所 '+ nowLeftData.totalVoteHouseCount +' 間');
 
       var leftCanidiate7Progress = Math.floor((nowLeftData.candidate7/(nowLeftData.candidate7+nowLeftData.candidate6)*100));
+      var leftCanidiate6Progress = 100-leftCanidiate7Progress;
       if (isNaN(leftCanidiate7Progress)) {
         leftCanidiate7Progress = 0;
-      }
-
-      var leftCanidiate6Progress = Math.floor((nowLeftData.candidate6/(nowLeftData.candidate7+nowLeftData.candidate6)*100));
-      if (isNaN(leftCanidiate6Progress)) {
         leftCanidiate6Progress = 0;
       }
+
+      // var leftCanidiate6Progress = Math.floor((nowLeftData.candidate6/(nowLeftData.candidate7+nowLeftData.candidate6)*100));
+      // if (isNaN(leftCanidiate6Progress)) {
+      //   leftCanidiate6Progress = 0;
+      // }
 
       var leftVoteProgress = Math.floor(((nowLeftData.totalVoteHouseCount-nowLeftData.unfinishedVoteHouse)/nowLeftData.totalVoteHouseCount)*100);
       if (isNaN(leftVoteProgress)) {
@@ -178,16 +180,20 @@ $(function() {
       $('#leftVoteProgress #progress').css("background-color", nowLeftData.color);
       //$('#rightHeader').text(districts[1].zhName);
       //
-          
+      
+
       var rightCanidiate7Progress = Math.floor((nowRightData.candidate7/(nowRightData.candidate7+nowRightData.candidate6)*100));
+      var rightCanidiate6Progress = 100-rightCanidiate7Progress;
       if (isNaN(rightCanidiate7Progress)) {
         rightCanidiate7Progress = 0;
-      }
-
-      var rightCanidiate6Progress = Math.floor((nowRightData.candidate6/(nowRightData.candidate7+nowRightData.candidate6)*100));
-      if (isNaN(rightCanidiate6Progress)) {
         rightCanidiate6Progress = 0;
       }
+
+
+      // var rightCanidiate6Progress = Math.floor((nowRightData.candidate6/(nowRightData.candidate7+nowRightData.candidate6)*100));
+      // if (isNaN(rightCanidiate6Progress)) {
+      //   rightCanidiate6Progress = 0;
+      // }
 
       var rightVoteProgress = Math.floor(((nowRightData.totalVoteHouseCount-nowRightData.unfinishedVoteHouse)/nowRightData.totalVoteHouseCount)*100);
       if (isNaN(rightVoteProgress)) {

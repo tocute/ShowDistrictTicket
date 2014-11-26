@@ -26,6 +26,12 @@ $(function() {
 	};
 
 	var getAllDistrictData = function() {
+
+	 	allVoteHouse=0;
+	 	allUnFinishedVoteHouse=0;
+	 	allTicketsSix=0;
+	 	allTicketsSeven=0;
+
 		$('#loader').show()
 		Parse.Cloud.run("GetAllDistrictTicket",null, {
 			success: function(results) {
@@ -54,5 +60,7 @@ $(function() {
 	};
 
 	getAllDistrictData();
+
+	setInterval(getAllDistrictData, 30000);
 	
 });
