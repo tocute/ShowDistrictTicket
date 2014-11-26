@@ -12,9 +12,8 @@ $(function() {
 		$('.leftTicket').text(Math.floor(allTicketsSeven/10000) + "萬" + allTicketsSeven%10000 + "票");
 		$('.rightTicket').text(Math.floor(allTicketsSix/10000) + "萬" + allTicketsSix%10000 + "票");
 		$('.leftPercentage').text(Math.floor(allTicketsSeven/(allTicketsSix+allTicketsSeven)*100) +'%');
-		$('.rightPercentage').text(Math.floor(allTicketsSix/(allTicketsSix+allTicketsSeven)*100) +'%');
-		$('.TotalVoteLabel').text('總投票所'+allVoteHouse+'間');
-		$('.progressBar .progress-bar-custom').css('width', Math.floor(((allVoteHouse-allUnFinishedVoteHouse)/allVoteHouse)*100) +"%");
+		$('.rightPercentage').text(100-Math.floor(allTicketsSeven/(allTicketsSix+allTicketsSeven)*100) +'%');
+		$('.progressBar .progress-bar-info').css('width', Math.floor(((allVoteHouse-allUnFinishedVoteHouse)/allVoteHouse)*100) +"%");
 		$('.progressBar .progressBarPercentageLabel').text(Math.floor(((allVoteHouse-allUnFinishedVoteHouse)/allVoteHouse)*100) +"%");
 	};
 
