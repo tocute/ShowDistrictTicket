@@ -96,13 +96,13 @@ body, html {
 .leftTicket {
 	text-align: center;
 	font-size: 70px;
-	padding-top: 12%;
+	padding-top: 6%;
 }
 
 .leftPercentage {
 	text-align: center;
 	font-size: 75px;
-	padding-top: 5%;
+	padding-top: 0%;
 }
 
 .rightContentTop {
@@ -130,13 +130,13 @@ body, html {
 .rightTicket {
 	text-align: center;
 	font-size: 70px;
-	padding-top: 12%;
+	padding-top: 6%;
 }
 
 .rightPercentage {
 	text-align: center;
 	font-size: 75px;
-	padding-top: 5%;
+	padding-top: 0%;
 }
 
 .leftContentbottom {

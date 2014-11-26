@@ -93,7 +93,7 @@ $(function() {
       };
 
       $("#loader").show();
-      Parse.Cloud.run("GetAllDistrictTicket",null, 
+      Parse.Cloud.run("GetAllDistrictTicketOld",null, 
       {
         success: function(results) {
 
@@ -111,6 +111,7 @@ $(function() {
               "color":name.background
             };
             districts.push(district);
+            console.log(JSON.stringify(results));
           };
 
           var leftDistrictId = mDistrictIDArray[nowIndex];
@@ -137,38 +138,73 @@ $(function() {
       var rightDistrictId = mDistrictIDArray[nowIndex+1];
 
       for (var i = 0; i < districts.length; i++) {
+        console.log(typeof(leftDistrictId));
+        console.log(typeof(districts[i].districtId));
         if (leftDistrictId === districts[i].districtId) {
           nowLeftData = districts[i];
         } if (rightDistrictId === districts[i].districtId) {
           nowRightData = districts[i];
         }
       }
-      console.log(nowLeftData);
+      console.log("===" + nowLeftData);
       //$('#leftHeader').text(districts[0].zhName);
       $('#leftHeaderImage').attr("src", "image/district/"+ nowLeftData.engName +".png");
       $('#leftDiv').attr("style", "background-image: url(image/map/"+ nowLeftData.engName +".png);");
       $('#leftSevenTicketNum').text(Math.floor(nowLeftData.candidate7/10000) + "萬" + nowLeftData.candidate7%10000 + "票");
       $('#leftSixTicketNum').text(Math.floor(nowLeftData.candidate6/10000) + "萬" + nowLeftData.candidate6%10000 + "票");
       $('#leftVoteHouseCount').text(''+ nowLeftData.zhName +'區總投票所 '+ nowLeftData.totalVoteHouseCount +' 間');
-      $("#leftSevenProgress #progress").attr("style","width: " + Math.floor((nowLeftData.candidate7/(nowLeftData.candidate7+nowLeftData.candidate6)*100)) +"%");
-      $("#leftSevenProgress #progress span").text(Math.floor(nowLeftData.candidate7/(nowLeftData.candidate7+nowLeftData.candidate6)*100) +"%");
-      $("#leftSixProgress #progress").attr("style","width: " + Math.floor((nowLeftData.candidate6/(nowLeftData.candidate7+nowLeftData.candidate6)*100)) +"%");
-      $("#leftSixProgress #progress span").text(Math.floor(nowLeftData.candidate6/(nowLeftData.candidate7+nowLeftData.candidate6)*100) +"%");
-      $("#leftVoteProgress #progress").attr("style","width: "+ Math.floor(((nowLeftData.totalVoteHouseCount-nowLeftData.unfinishedVoteHouse)/nowLeftData.totalVoteHouseCount)*100) +"%");
-      $("#leftVoteProgress #progress span").text(Math.floor(((nowLeftData.totalVoteHouseCount-nowLeftData.unfinishedVoteHouse)/nowLeftData.totalVoteHouseCount)*100) +"%");
+
+      var leftCanidiate7Progress = Math.floor((nowLeftData.candidate7/(nowLeftData.candidate7+nowLeftData.candidate6)*100));
+      if (isNaN(leftCanidiate7Progress)) {
+        leftCanidiate7Progress = 0;
+      }
+
+      var leftCanidiate6Progress = Math.floor((nowLeftData.candidate6/(nowLeftData.candidate7+nowLeftData.candidate6)*100));
+      if (isNaN(leftCanidiate6Progress)) {
+        leftCanidiate6Progress = 0;
+      }
+
+      var leftVoteProgress = Math.floor(((nowLeftData.totalVoteHouseCount-nowLeftData.unfinishedVoteHouse)/nowLeftData.totalVoteHouseCount)*100);
+      if (isNaN(leftVoteProgress)) {
+        leftVoteProgress = 0;
+      }
+
+      $("#leftSevenProgress #progress").attr("style","width: " +  leftCanidiate7Progress +"%");
+      $("#leftSevenProgress #progress span").text(leftCanidiate7Progress +"%");
+      $("#leftSixProgress #progress").attr("style","width: " + leftCanidiate6Progress +"%");
+      $("#leftSixProgress #progress span").text(leftCanidiate6Progress +"%");
+      $("#leftVoteProgress #progress").attr("style","width: "+ leftVoteProgress +"%");
+      $("#leftVoteProgress #progress span").text(leftVoteProgress +"%");
       $('#leftVoteProgress #progress').css("background-color", nowLeftData.color);
-      //$('#rightHeader').text(districts[1].zhName);        
+      //$('#rightHeader').text(districts[1].zhName);
+      //
+          
+      var rightCanidiate7Progress = Math.floor((nowRightData.candidate7/(nowRightData.candidate7+nowRightData.candidate6)*100));
+      if (isNaN(rightCanidiate7Progress)) {
+        rightCanidiate7Progress = 0;
+      }
+
+      var rightCanidiate6Progress = Math.floor((nowRightData.candidate6/(nowRightData.candidate7+nowRightData.candidate6)*100));
+      if (isNaN(rightCanidiate6Progress)) {
+        rightCanidiate6Progress = 0;
+      }
+
+      var rightVoteProgress = Math.floor(((nowRightData.totalVoteHouseCount-nowRightData.unfinishedVoteHouse)/nowRightData.totalVoteHouseCount)*100);
+      if (isNaN(rightVoteProgress)) {
+        rightVoteProgress = 0;
+      }
+
       $('#rightHeaderImage').attr("src", "image/district/"+ nowRightData.engName +".png");
       $('#rightDiv').attr("style", "background-image: url(image/map/"+ nowRightData.engName +".png);");
       $('#rightSevenTicketNum').text(Math.floor(nowRightData.candidate7/10000) + "萬" + nowRightData.candidate7%10000 + "票");
       $('#rightSixTicketNum').text(Math.floor(nowRightData.candidate6/10000) + "萬" + nowRightData.candidate6%10000 + "票");
       $('#rightVoteHouseCount').text(''+ nowRightData.zhName +'區總投票所 '+ nowRightData.totalVoteHouseCount +' 間');
-      $("#rightSevenProgress #progress").attr("style","width: " + Math.floor((nowRightData.candidate7/(nowRightData.candidate7+nowRightData.candidate6)*100)) +"%");
-      $("#rightSevenProgress #progress span").text(Math.floor(nowRightData.candidate7/(nowRightData.candidate7+nowRightData.candidate6)*100) +"%");
-      $("#rightSixProgress #progress").attr("style","width: " + Math.floor((nowRightData.candidate6/(nowRightData.candidate7+nowRightData.candidate6)*100)) +"%");
-      $("#rightSixProgress #progress span").text(Math.floor(nowRightData.candidate6/(nowRightData.candidate7+nowRightData.candidate6)*100) +"%");
-      $("#rightVoteProgress #progress").attr("style","width: "+ Math.floor(((nowRightData.totalVoteHouseCount-nowRightData.unfinishedVoteHouse)/nowRightData.totalVoteHouseCount)*100) +"%");
-      $("#rightVoteProgress #progress span").text(Math.floor(((nowRightData.totalVoteHouseCount-nowRightData.unfinishedVoteHouse)/nowRightData.totalVoteHouseCount)*100) +"%");
+      $("#rightSevenProgress #progress").attr("style","width: " + rightCanidiate7Progress +"%");
+      $("#rightSevenProgress #progress span").text(rightCanidiate7Progress +"%");
+      $("#rightSixProgress #progress").attr("style","width: " + rightCanidiate6Progress +"%");
+      $("#rightSixProgress #progress span").text(rightCanidiate6Progress +"%");
+      $("#rightVoteProgress #progress").attr("style","width: "+ rightVoteProgress +"%");
+      $("#rightVoteProgress #progress span").text(rightVoteProgress +"%");
       $('#rightVoteProgress #progress').css("background-color", nowRightData.color);
     }
 

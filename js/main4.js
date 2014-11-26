@@ -9,10 +9,18 @@ $(function() {
 
 	var retrieveData = function() {
 		console.log(allTicketsSeven);
+
+		var leftPercentage = Math.floor(allTicketsSeven/(allTicketsSix+allTicketsSeven)*100);
+		var rightPercentage = 100-leftPercentage;
+		if (isNaN(leftPercentage)) {
+			leftPercentage = 0;
+			rightPercentage = 0;
+		}
+		
 		$('.leftTicket').text(Math.floor(allTicketsSeven/10000) + "萬" + allTicketsSeven%10000 + "票");
 		$('.rightTicket').text(Math.floor(allTicketsSix/10000) + "萬" + allTicketsSix%10000 + "票");
-		$('.leftPercentage').text(Math.floor(allTicketsSeven/(allTicketsSix+allTicketsSeven)*100) +'%');
-		$('.rightPercentage').text(100-Math.floor(allTicketsSeven/(allTicketsSix+allTicketsSeven)*100) +'%');
+		$('.leftPercentage').text(leftPercentage +'%');
+		$('.rightPercentage').text(rightPercentage +'%');
 		$('.progressBar .progress-bar-info').css('width', Math.floor(((allVoteHouse-allUnFinishedVoteHouse)/allVoteHouse)*100) +"%");
 		$('.progressBar .progressBarPercentageLabel').text(Math.floor(((allVoteHouse-allUnFinishedVoteHouse)/allVoteHouse)*100) +"%");
 	};
