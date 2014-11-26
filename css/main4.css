@@ -1,0 +1,155 @@
+@charset "utf-8";
+/* CSS Document */
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input{margin:0;padding:0;}
+
+.fl{float:left;}
+.fr{float:right;}
+
+body, html {
+  height: 100%;
+  font-weight:bold;
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background: #dcdcdd;
+  background-image: url(../image/img_map.png);
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: repeat-x;
+}
+
+#background 
+{
+	position: fixed;
+	z-index: -1;
+	height: 100%;
+	width: 100%;
+	background: #dcdcdd;
+	background-image: url(../image/img_map.png);
+	background-size: cover;
+	background-position: bottom;
+	background-repeat: repeat-x;
+}
+
+.main {
+	width: 100%;
+	height:100%;
+}
+
+.topContent {
+	height:70%;
+}
+
+.bottomContent {
+	height:30%;
+}
+
+.Content {
+	width:50%;
+	height:100%;
+}
+
+.ContentCommon {
+	color:#FFFFFF;
+}
+
+.ContentCommonSub {
+	height:33%;
+}
+
+.leftContentTop {
+	background: #1aa38f;
+	width:100%;
+	height:90%;
+}
+
+.leftName {
+	width: 200px;
+	height: 60px;
+	text-align: center;
+	background-image: url(../image/candidate7_w.png);
+	background-size: cover;
+	position: relative;
+	top: 35%;
+	margin: -10px auto;
+}
+
+.leftTicket {
+	text-align: center;
+	font-size: 40px;
+	padding-top: 30px;
+}
+
+.leftPercentage {
+	text-align: center;
+	font-size: 60px;
+	padding-top: 10px;
+}
+
+.rightContentTop {
+	background: #15223f;
+	width:100%;
+	height:90%;
+}
+
+.rightName {
+	width: 200px;
+	height: 60px;
+	text-align: center;
+	background-image: url(../image/candidate6_w.png);
+	background-size: cover;
+	position: relative;
+	top: 35%;
+	margin: -10px auto;
+}
+
+.rightTicket {
+	text-align: center;
+	font-size: 40px;
+	padding-top: 30px;
+}
+
+.rightPercentage {
+	text-align: center;
+	font-size: 60px;
+	padding-top: 10px;
+}
+
+.leftContentbottom {
+	color: #595757;
+	padding-right: 5px;
+	font-size: 17px;
+}
+
+.rightContentbottom {
+	color: #595757;
+	padding-right: 5px;
+	font-size: 17px;
+}
+
+.progressBarLabel {
+	padding-left: 20px;
+	margin-top: 10px;
+	display: inline-block;
+	font-size: 20px;
+}
+.progressBar{
+	padding-left: 22px;
+	margin-top: 10px;
+	padding-right: 25px;
+}
+
+.progressBar .progress {background: #3e3a39; border: 0px solid rgba(255, 255, 255, 0.87); border-radius: 4px; height: 20px;}
+.progressBar .progress-bar-custom {background: #da4040;}
+.progressBar .progressBarPercentageLabel {
+	margin-right: -90%;
+}
+.TotalVoteLabel {
+	padding-right: 20px;
+	margin-top: 10px;
+	display: inline-block;
+	font-size: 20px;
+	text-align: right;
+	float: right;
+}
