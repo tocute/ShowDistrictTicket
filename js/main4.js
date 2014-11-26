@@ -16,9 +16,19 @@ $(function() {
 			leftPercentage = 0;
 			rightPercentage = 0;
 		}
+
+		var leftTicket = Math.floor(allTicketsSeven/10000) + "萬" + allTicketsSeven%10000 + "票";
+		if (Math.floor(allTicketsSeven/10000) === 0) {
+		  leftTicket = allTicketsSeven%10000 + "票"
+		}
+
+		var rightTicket = Math.floor(allTicketsSix/10000) + "萬" + allTicketsSix%10000 + "票";
+		if (Math.floor(allTicketsSix/10000) === 0) {
+		  rightTicket = allTicketsSix%10000 + "票"
+		}
 		
-		$('.leftTicket').text(Math.floor(allTicketsSeven/10000) + "萬" + allTicketsSeven%10000 + "票");
-		$('.rightTicket').text(Math.floor(allTicketsSix/10000) + "萬" + allTicketsSix%10000 + "票");
+		$('.leftTicket').text(leftTicket);
+		$('.rightTicket').text(rightTicket);
 		$('.leftPercentage').text(leftPercentage +'%');
 		$('.rightPercentage').text(rightPercentage +'%');
 		$('.progressBar .progress-bar-info').css('width', Math.floor(((allVoteHouse-allUnFinishedVoteHouse)/allVoteHouse)*100) +"%");

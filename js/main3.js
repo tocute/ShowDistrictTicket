@@ -146,12 +146,23 @@ $(function() {
           nowRightData = districts[i];
         }
       }
-      console.log("===" + nowLeftData);
+
+      var leftSevenTicketNum = Math.floor(nowLeftData.candidate7/10000) + "萬" + nowLeftData.candidate7%10000 + "票"
+      if (Math.floor(nowLeftData.candidate7/10000) === 0) {
+        leftSevenTicketNum = nowLeftData.candidate7%10000 + "票"
+      }
+
+      var leftSixTicketNum = Math.floor(nowLeftData.candidate6/10000) + "萬" + nowLeftData.candidate6%10000 + "票"
+      if (Math.floor(nowLeftData.candidate6/10000) === 0) {
+        leftSixTicketNum = nowLeftData.candidate6%10000 + "票"
+      }
+
+
       //$('#leftHeader').text(districts[0].zhName);
       $('#leftHeaderImage').attr("src", "image/district/"+ nowLeftData.engName +".png");
       $('#leftDiv').attr("style", "background-image: url(image/map/"+ nowLeftData.engName +".png);");
-      $('#leftSevenTicketNum').text(Math.floor(nowLeftData.candidate7/10000) + "萬" + nowLeftData.candidate7%10000 + "票");
-      $('#leftSixTicketNum').text(Math.floor(nowLeftData.candidate6/10000) + "萬" + nowLeftData.candidate6%10000 + "票");
+      $('#leftSevenTicketNum').text(leftSevenTicketNum);
+      $('#leftSixTicketNum').text(leftSixTicketNum);
       $('#leftVoteHouseCount').text(''+ nowLeftData.zhName +'區總投票所 '+ nowLeftData.totalVoteHouseCount +' 間');
 
       var leftCanidiate7Progress = Math.floor((nowLeftData.candidate7/(nowLeftData.candidate7+nowLeftData.candidate6)*100));
@@ -200,10 +211,22 @@ $(function() {
         rightVoteProgress = 0;
       }
 
+      var rightSevenTicketNum = Math.floor(nowRightData.candidate7/10000) + "萬" + nowRightData.candidate7%10000 + "票";
+      if (Math.floor(nowRightData.candidate7/10000) === 0) {
+        rightSevenTicketNum = nowRightData.candidate7%10000 + "票"
+      }
+
+      var rightSixTicketNum = Math.floor(nowRightData.candidate6/10000) + "萬" + nowRightData.candidate6%10000 + "票"
+      if (Math.floor(nowRightData.candidate6/10000) === 0) {
+        rightSixTicketNum = nowRightData.candidate6%10000 + "票"
+      }
+
+
+
       $('#rightHeaderImage').attr("src", "image/district/"+ nowRightData.engName +".png");
       $('#rightDiv').attr("style", "background-image: url(image/map/"+ nowRightData.engName +".png);");
-      $('#rightSevenTicketNum').text(Math.floor(nowRightData.candidate7/10000) + "萬" + nowRightData.candidate7%10000 + "票");
-      $('#rightSixTicketNum').text(Math.floor(nowRightData.candidate6/10000) + "萬" + nowRightData.candidate6%10000 + "票");
+      $('#rightSevenTicketNum').text(rightSevenTicketNum);
+      $('#rightSixTicketNum').text(rightSixTicketNum);
       $('#rightVoteHouseCount').text(''+ nowRightData.zhName +'區總投票所 '+ nowRightData.totalVoteHouseCount +' 間');
       $("#rightSevenProgress #progress").attr("style","width: " + rightCanidiate7Progress +"%");
       $("#rightSevenProgress #progress span").text(rightCanidiate7Progress +"%");
