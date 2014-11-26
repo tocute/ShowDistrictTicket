@@ -9,9 +9,12 @@ body, html {
 }
 
 #loader {
-	position: fixed; 
-	left: 42%; 
-	top: 85%; 
+	z-index:1;
+	position: absolute;
+	left:50%;
+	top:50%;
+	margin-top:-50px;
+	margin-left:-50px;
 	display: none;
 }
 
