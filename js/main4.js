@@ -19,6 +19,7 @@ $(function() {
 	};
 
 	var getAllDistrictData = function() {
+		$('#loader').show()
 		Parse.Cloud.run("GetAllDistrictTicket",null, {
 			success: function(results) {
 
@@ -31,6 +32,7 @@ $(function() {
 			  };
 
 			  retrieveData();
+			  $('#loader').hide();
 			},
 			error: function(error) 
 			{
@@ -39,6 +41,7 @@ $(function() {
 			        "message":"密碼錯誤  請再次確認投票所編號與密碼"
 			    }*/
 			    alert(JSON.stringify(error.message));
+			    $('#loader').hide();
 			}
 		});
 	};
