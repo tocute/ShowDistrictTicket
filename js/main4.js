@@ -10,8 +10,10 @@ $(function() {
 	var retrieveData = function() {
 		console.log(allTicketsSeven);
 
-		var leftPercentage = Math.floor(allTicketsSeven/(allTicketsSix+allTicketsSeven)*100);
-		var rightPercentage = 100-leftPercentage;
+		var leftPercentage = Math.floor(allTicketsSeven/(allTicketsSix+allTicketsSeven) * 1000)/10;
+		var rightPercentage = (100-leftPercentage).toFixed(1);//Math.floor(100-leftPercentage);
+		console.log(rightPercentage);
+		
 		if (isNaN(leftPercentage)) {
 			leftPercentage = 0;
 			rightPercentage = 0;
@@ -31,8 +33,8 @@ $(function() {
 		$('.rightTicket').text(rightTicket);
 		$('.leftPercentage').text(leftPercentage +'%');
 		$('.rightPercentage').text(rightPercentage +'%');
-		$('.progressBar .progress-bar-info').css('width', Math.floor(((allVoteHouse-allUnFinishedVoteHouse)/allVoteHouse)*100) +"%");
-		$('.progressBar .progressBarPercentageLabel').text(Math.floor(((allVoteHouse-allUnFinishedVoteHouse)/allVoteHouse)*100) +"%");
+		$('.progressBar .progress-bar-info').css('width', Math.floor(((allVoteHouse-allUnFinishedVoteHouse)/allVoteHouse)*1000)/10 +"%");
+		$('.progressBar .progressBarPercentageLabel').text(Math.floor(((allVoteHouse-allUnFinishedVoteHouse)/allVoteHouse)*1000)/10 +"%");
 	};
 
 	var getAllDistrictData = function() {

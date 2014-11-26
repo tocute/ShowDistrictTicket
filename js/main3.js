@@ -165,8 +165,8 @@ $(function() {
       $('#leftSixTicketNum').text(leftSixTicketNum);
       $('#leftVoteHouseCount').text(''+ nowLeftData.zhName +'區總投票所 '+ nowLeftData.totalVoteHouseCount +' 間');
 
-      var leftCanidiate7Progress = Math.floor((nowLeftData.candidate7/(nowLeftData.candidate7+nowLeftData.candidate6)*100));
-      var leftCanidiate6Progress = 100-leftCanidiate7Progress;
+      var leftCanidiate7Progress = Math.floor((nowLeftData.candidate7/(nowLeftData.candidate7+nowLeftData.candidate6) * 1000))/10;//Math.floor((nowLeftData.candidate7/(nowLeftData.candidate7+nowLeftData.candidate6)*100));
+      var leftCanidiate6Progress = (100-leftCanidiate7Progress).toFixed(1);//100-leftCanidiate7Progress;
       if (isNaN(leftCanidiate7Progress)) {
         leftCanidiate7Progress = 0;
         leftCanidiate6Progress = 0;
@@ -177,7 +177,7 @@ $(function() {
       //   leftCanidiate6Progress = 0;
       // }
 
-      var leftVoteProgress = Math.floor(((nowLeftData.totalVoteHouseCount-nowLeftData.unfinishedVoteHouse)/nowLeftData.totalVoteHouseCount)*100);
+      var leftVoteProgress = Math.floor(((nowLeftData.totalVoteHouseCount-nowLeftData.unfinishedVoteHouse)/nowLeftData.totalVoteHouseCount)*1000)/10;
       if (isNaN(leftVoteProgress)) {
         leftVoteProgress = 0;
       }
@@ -192,9 +192,9 @@ $(function() {
       //$('#rightHeader').text(districts[1].zhName);
       //
       
+      var rightCanidiate7Progress = Math.floor((nowRightData.candidate7/(nowRightData.candidate7+nowRightData.candidate6) * 1000))/10;//Math.floor((nowLeftData.candidate7/(nowLeftData.candidate7+nowLeftData.candidate6)*100));
+      var rightCanidiate6Progress = (100-rightCanidiate7Progress).toFixed(1);//100-leftCanidiate7Progress;
 
-      var rightCanidiate7Progress = Math.floor((nowRightData.candidate7/(nowRightData.candidate7+nowRightData.candidate6)*100));
-      var rightCanidiate6Progress = 100-rightCanidiate7Progress;
       if (isNaN(rightCanidiate7Progress)) {
         rightCanidiate7Progress = 0;
         rightCanidiate6Progress = 0;
@@ -206,7 +206,7 @@ $(function() {
       //   rightCanidiate6Progress = 0;
       // }
 
-      var rightVoteProgress = Math.floor(((nowRightData.totalVoteHouseCount-nowRightData.unfinishedVoteHouse)/nowRightData.totalVoteHouseCount)*100);
+      var rightVoteProgress = Math.floor(((nowRightData.totalVoteHouseCount-nowRightData.unfinishedVoteHouse)/nowRightData.totalVoteHouseCount)*1000)/10;
       if (isNaN(rightVoteProgress)) {
         rightVoteProgress = 0;
       }
