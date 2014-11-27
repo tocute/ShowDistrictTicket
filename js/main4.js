@@ -33,6 +33,7 @@ $(function() {
 		$('.rightTicket').text(rightTicket);
 		$('.leftPercentage').text(leftPercentage +'%');
 		$('.rightPercentage').text(rightPercentage +'%');
+		$('.progressBarLabelSub').text(': ' + (allVoteHouse-allUnFinishedVoteHouse) + '間');
 		$('.progressBar .progress-bar-info').css('width', Math.floor(((allVoteHouse-allUnFinishedVoteHouse)/allVoteHouse)*1000)/10 +"%");
 		$('.progressBar .progressBarPercentageLabel').text(Math.floor(((allVoteHouse-allUnFinishedVoteHouse)/allVoteHouse)*1000)/10 +"%");
 	};
