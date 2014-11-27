@@ -163,6 +163,7 @@ $(function() {
       $('#leftDiv').attr("style", "background-image: url(image/map/"+ nowLeftData.engName +".png);");
       $('#leftSevenTicketNum').text(leftSevenTicketNum);
       $('#leftSixTicketNum').text(leftSixTicketNum);
+      $('#leftVoteHouseNum').text('目前開票進度: ' + (nowLeftData.totalVoteHouseCount-nowLeftData.unfinishedVoteHouse) + '間');
       $('#leftVoteHouseCount').text(''+ nowLeftData.zhName +'區總投票所 '+ nowLeftData.totalVoteHouseCount +' 間');
 
       var leftCanidiate7Progress = Math.floor((nowLeftData.candidate7/(nowLeftData.candidate7+nowLeftData.candidate6) * 1000))/10;//Math.floor((nowLeftData.candidate7/(nowLeftData.candidate7+nowLeftData.candidate6)*100));
@@ -227,6 +228,7 @@ $(function() {
       $('#rightDiv').attr("style", "background-image: url(image/map/"+ nowRightData.engName +".png);");
       $('#rightSevenTicketNum').text(rightSevenTicketNum);
       $('#rightSixTicketNum').text(rightSixTicketNum);
+      $('#rightVoteHouseNum').text('目前開票進度: ' + (nowRightData.totalVoteHouseCount-nowRightData.unfinishedVoteHouse) + '間');
       $('#rightVoteHouseCount').text(''+ nowRightData.zhName +'區總投票所 '+ nowRightData.totalVoteHouseCount +' 間');
       $("#rightSevenProgress #progress").attr("style","width: " + rightCanidiate7Progress +"%");
       $("#rightSevenProgress #progress span").text(rightCanidiate7Progress +"%");
