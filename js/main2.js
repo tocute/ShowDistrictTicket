@@ -54,14 +54,37 @@ $(document).on("pageinit","#page-1",function(e)
             {
                 var totalCandidate7Tictet = 0;
                 var totalCandidate6Tictet = 0;
-            
+                var json_data = [];
+
+                $("#"+mLeftTableID +" tbody tr").remove();
+                $("#"+mRightTableID+" tbody tr").remove();
+                $("#bigTable tr").remove();
+
+                for(var ii = 0; ii < 12; ii++)
+                {
+                    var result_obj = {districtId:0, candidate7:0, candidate6:0};
+                    json_data.push(result_obj);
+                } 
+
                 for(var i = 0; i<results.length; i++)
+                {
+                    var entiry = results[i];
+                    var district_Id = entiry.districtId
+                    var district_Id_index = getDistrictIndex(district_Id);
+
+                    json_data[district_Id_index].districtId = parseInt(district_Id);
+                    json_data[district_Id_index].candidate7 = entiry.candidate7;
+                    json_data[district_Id_index].candidate6 = entiry.candidate6                
+                }
+
+
+                for(var i = 0; i<json_data.length; i++)
                 {
                     var table_element = $("#"+mLeftTableID);
                     if(i%2 == 1)
                         table_element = $("#"+mRightTableID);
 
-                    var entiry = results[i];
+                    var entiry = json_data[i];
 
                     var candidate7Tictet = entiry.candidate7;
                     var candidate6Tictet = entiry.candidate6;
